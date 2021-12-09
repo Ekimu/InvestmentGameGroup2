@@ -13,4 +13,7 @@ if response.status_code != 200:
 # The service sends JSON data, we parse that into a Python datastructure
 raw_data = response.json()
 
-print(raw_data)
+data = raw_data['Time Series (5min)']
+df = pd.DataFrame(data).T.apply(pd.to_numeric)
+df.info()
+print(df.head())
