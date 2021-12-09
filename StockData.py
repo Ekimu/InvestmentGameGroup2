@@ -1,5 +1,6 @@
 import requests
 import pandas as pd
+from graphs import creating_graph
 
 def requesting_one_stock(stock):
     # Requesting one stock from IBM, to see how it works :)
@@ -17,3 +18,5 @@ def requesting_one_stock(stock):
     df = pd.DataFrame(data).T.apply(pd.to_numeric)
     df.info()
     print(df.head())
+
+    creating_graph(df)
