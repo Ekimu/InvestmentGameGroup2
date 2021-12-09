@@ -17,6 +17,3 @@ def requesting_one_stock(stock):
     df = pd.DataFrame(data).T.apply(pd.to_numeric)
     df.info()
     print(df.head())
-
-stock="IBM"
-requesting_one_stock(stock)
