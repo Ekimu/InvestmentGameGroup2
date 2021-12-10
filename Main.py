@@ -36,8 +36,13 @@ while True:
         print("You decided not inspect any stock, we'll end here")
         break
     elif inspect == "y":
-        stock=input("Please select a stock: ")
+    while True:
+        stock = input("Please select a stock: ")
         datastock = requesting_one_stock(stock)
+        if datastock == 0:
+
+        elif requesting_one_stock(stock) = df
+
 
         creating_graph(datastock, stock)
 

@@ -13,10 +13,15 @@ def requesting_one_stock(stock):
 
     # The service sends JSON data, we parse that into a Python datastructure
     raw_data = response.json()
+    while True:
+        try:
+            data = raw_data['Time Series (60min)']
+            df = pd.DataFrame(data).T.apply(pd.to_numeric)
+            df.info()
+            print(df.head())
+            return df
+            break
+        except KeyError:
+            print("Oops! That was not a stock name. Try again...")
+            return 0
 
-    data = raw_data['Time Series (60min)']
-    df = pd.DataFrame(data).T.apply(pd.to_numeric)
-    df.info()
-    print(df.head())
-
-    return df
