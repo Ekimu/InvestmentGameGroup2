@@ -13,8 +13,8 @@ Portfolio = [
 
 ]
 # Portfolio = [
-#     { 'name': 'IMB', 'buyingprice': 2, 'stock': 100 },
-#     { 'name': 'AMZN', 'price': 3, 'stock': 40 },
+#     { 'name': 'IMB', 'stockamount': 100 },
+#     { 'name': 'AMZN', 'stockamount': 40 },
 #     { 'name': 'cheese', 'price': 3, 'stock': 30 },
 #     { 'name': 'milk', 'price': 1, 'stock': 80 }
 # ]
@@ -28,10 +28,13 @@ print("You can choose any stock you want.")
 stock=input("Please select a stock: ")
 
 # 4.b Show changes in stock through a time period (day, week, month, year) with %
-requesting_one_stock(stock)
+datastock = requesting_one_stock(stock)
 
 # Buy stocks
-input(f"Do you want buy {stock} for PRICE? (b/s/no)")
+decision = input(f"Do you want buy {stock} for PRICE? (b/s/no)")
+if decision == "b":
+    price = datastock["close"][0]
+
 
 # Sell stocks
 # Compare (e.g. cash balance or portfolio) to other users

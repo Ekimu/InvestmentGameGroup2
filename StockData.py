@@ -20,3 +20,4 @@ def requesting_one_stock(stock):
     print(df.head())
 
     creating_graph(df)
+    return df
