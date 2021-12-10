@@ -1,34 +1,35 @@
-# Main program:
+#Main program:
 while True:
-    choice = input("""Choose what you want to do:
-    1. Show balance
+    print("""Main menu:
+    1. Show cash balance
     2. Show portfolio
     3. Search for stocks
     4. Buy stocks
     5. Sell stocks
     6. Compare to other users
     0. Quit """)
-    if choice == "1":
-        # 1. Show cash balance
+    choice=input("Please choose what you want to do: ")
+    if choice=="1":
+        print("1. Show cash balance")
 
-    elif choice == "2":
-        # 2.a Show portfolio
+    elif choice=="2":
+        print("2. Show portfolio")
         # 2.b Maybe option for looking at development in specific stocks in portfolio
 
-    elif choice == "3":
-        # 3.a Search stock
+    elif choice=="3":
+        print("3. Search for stocks")
 
-    elif choice == "4":
-        # 4. Buy stocks
+    elif choice=="4":
+        print("4. Buy stocks")
 
-    elif choice == "5":
-        # 5. Sell stocks
+    elif choice=="5":
+        print("5. Sell stocks")
 
-    elif choice == "6":
-        # 6. Compare (e.g. cash balance or portfolio) to other users
+    elif choice=="6":
+        print("6. Compare to other users")
 
-    elif choice == "0":
-        print("Thank you for playing our Investment Game. Bye!")
+    elif choice=="0":
+        print("Thank you for playing our Investment Game. Hope to see you soon. Bye!")
         break
     else:
         print("Please choose from the list")
