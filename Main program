@@ -1,0 +1,34 @@
+# Main program:
+while True:
+    choice = input("""Choose what you want to do:
+    1. Show balance
+    2. Show portfolio
+    3. Search for stocks
+    4. Buy stocks
+    5. Sell stocks
+    6. Compare to other users
+    0. Quit """)
+    if choice == "1":
+        # 1. Show cash balance
+
+    elif choice == "2":
+        # 2.a Show portfolio
+        # 2.b Maybe option for looking at development in specific stocks in portfolio
+
+    elif choice == "3":
+        # 3.a Search stock
+
+    elif choice == "4":
+        # 4. Buy stocks
+
+    elif choice == "5":
+        # 5. Sell stocks
+
+    elif choice == "6":
+        # 6. Compare (e.g. cash balance or portfolio) to other users
+
+    elif choice == "0":
+        print("Thank you for playing our Investment Game. Bye!")
+        break
+    else:
+        print("Please choose from the list")
