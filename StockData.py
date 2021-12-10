@@ -1,7 +1,6 @@
 import requests
 import pandas as pd
 
-
 def requesting_one_stock(stock):
     # Requesting one stock from IBM, to see how it works :)
     response = requests.get(f"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={stock}&interval=60min&apikey=KKM3IZ0WUPZTREAK&outputsize=full")
