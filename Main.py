@@ -36,57 +36,55 @@ while True:
         print("You decided not inspect any stock, we'll end here")
         break
     elif inspect == "y":
-    while True:
-        stock = input("Please select a stock: ")
-        datastock = requesting_one_stock(stock)
-        if datastock == 0:
+        while True:
+            stock = input("Please select a stock: ")
+            datastock = requesting_one_stock(stock)
+            if datastock is None:
+                continue
 
-        elif requesting_one_stock(stock) = df
+            creating_graph(datastock, stock)
 
+            currentprice = datastock["close"][0]
+            buysell = input(f"Do you want to buy or sell {stock} stock for the current price {currentprice}? (b/s/n)")
 
-        creating_graph(datastock, stock)
-
-        currentprice = datastock["close"][0]
-        buysell = input(f"Do you want to buy or sell {stock} stock for the current price {currentprice}? (b/s/n)")
-
-    # 4.b Show changes in stock through a time period (day, week, month, year) with %
+        # 4.b Show changes in stock through a time period (day, week, month, year) with %
 
 
-    #else #portfolio
+        #else #portfolio
 
 
 
-    # Buy stocks
-        if buysell == "b":
-            amount = int(input("How many stocks do you want to buy?"))
-            costs = amount * currentprice
-            cash_balance = cash_balance - costs
-            if stock in Portfolio:
-                Portfolio[stock] += amount
-            else:
-                Portfolio[stock] = amount
-            print("Your current portfolio consists of the following stock: ")
-            print(Portfolio)
-            print(costs)
-            print(cash_balance)
-    # Sell stocks
-        if buysell == "s":
-            amount = int(input("How many stocks do you want to buy?"))
-            costs = amount * currentprice
-            cash_balance = cash_balance + costs
-            if stock in Portfolio:
-                Portfolio[stock] -= amount
-            else:
-                Portfolio[stock] = -amount
-            print("Your current portfolio consists of the following stock: ")
-            print(Portfolio)
-            print(costs)
-            print(cash_balance)
+        # Buy stocks
+            if buysell == "b":
+                amount = int(input("How many stocks do you want to buy?"))
+                costs = amount * currentprice
+                cash_balance = cash_balance - costs
+                if stock in Portfolio:
+                    Portfolio[stock] += amount
+                else:
+                    Portfolio[stock] = amount
+                print("Your current portfolio consists of the following stock: ")
+                print(Portfolio)
+                print(costs)
+                print(cash_balance)
+        # Sell stocks
+            if buysell == "s":
+                amount = int(input("How many stocks do you want to buy?"))
+                costs = amount * currentprice
+                cash_balance = cash_balance + costs
+                if stock in Portfolio:
+                    Portfolio[stock] -= amount
+                else:
+                    Portfolio[stock] = -amount
+                print("Your current portfolio consists of the following stock: ")
+                print(Portfolio)
+                print(costs)
+                print(cash_balance)
 
 
 
-# Compare (e.g. cash balance or portfolio) to other users
-# Exit
+    # Compare (e.g. cash balance or portfolio) to other users
+    # Exit
 
 
 

@@ -14,11 +14,12 @@ def creating_graph(datastock, stock):
 
     #Draw a graph
     #datastock[['close']].plot()
-    fig = datastock.close.resample('B').last()
-    fig.plot()
-    #fig.set_ylabel('Eur')
-    #fig.set_title(f'Stock price of {stock}')
+    datatoplot = datastock.close.resample('B').last().iloc[0:30]
+    fig = datatoplot.plot()
+    fig.set_ylabel('Eur')
+    fig.set_title(f'Stock price of {stock}')
     #fig.set_xlim(dt.datetime(2021, 12, 8, 14, 30), dt.datetime(2021,12,8, 16))
 
-    #show the graph
+
+    #Show the graph
     plt.show()
