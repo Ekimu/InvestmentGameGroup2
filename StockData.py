@@ -1,10 +1,10 @@
 import requests
 import pandas as pd
-from graphs import creating_graph
+
 
 def requesting_one_stock(stock):
     # Requesting one stock from IBM, to see how it works :)
-    response = requests.get(f"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={stock}&interval=1min&apikey=KKM3IZ0WUPZTREAK")
+    response = requests.get(f"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={stock}&interval=60min&apikey=KKM3IZ0WUPZTREAK")
 
     # Since we are retrieving stuff from a web service, it's a good idea to check for the return status code
     # See: https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
@@ -14,10 +14,9 @@ def requesting_one_stock(stock):
     # The service sends JSON data, we parse that into a Python datastructure
     raw_data = response.json()
 
-    data = raw_data['Time Series (1min)']
+    data = raw_data['Time Series (60min)']
     df = pd.DataFrame(data).T.apply(pd.to_numeric)
     df.info()
     print(df.head())
 
-    creating_graph(df)
     return df

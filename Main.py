@@ -1,4 +1,5 @@
 from StockData import requesting_one_stock
+from graphs import creating_graph
 
 # Log in
 
@@ -37,6 +38,9 @@ while True:
     elif inspect == "y":
         stock=input("Please select a stock: ")
         datastock = requesting_one_stock(stock)
+
+        creating_graph(datastock, stock)
+
         currentprice = datastock["close"][0]
         buysell = input(f"Do you want to buy or sell {stock} stock for the current price {currentprice}? (b/s/n)")
 
