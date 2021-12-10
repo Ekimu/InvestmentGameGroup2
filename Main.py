@@ -28,36 +28,45 @@ print("You can choose any stock you want.")
 print(f"Your current portfolio contains")
 print(Portfolio)
 
-inspect=input("Would you like to inspect a stock: (y/n)")
-if inspect == "y":
-    stock=input("Please select a stock: ")
 
-# 4.b Show changes in stock through a time period (day, week, month, year) with %
-if inspect =="y":
-    datastock = requesting_one_stock(stock)
-    currentprice = datastock["close"][0]
+while True:
+    inspect=input("Would you like to inspect a stock: (y/n)")
+    if inspect != "y":
+        print("You decided not inspect any stock, we'll end here")
+        break
+    elif inspect == "y":
+        stock=input("Please select a stock: ")
+        datastock = requesting_one_stock(stock)
+        currentprice = datastock["close"][0]
+        buysell = input(f"Do you want to buy or sell {stock} stock for the current price {currentprice}? (b/s/n)")
 
-buysell = input(f"Do you want to buy or sell {stock} stock for the current price {currentprice}? (b/s/n)")
-#else #portfolio
+    # 4.b Show changes in stock through a time period (day, week, month, year) with %
+
+
+    #else #portfolio
 
 
 
-# Buy stocks
-if buysell == "b":
-    amount = int(input("How many stocks do you want to buy?"))
-    costs = amount * currentprice
-    cash_balance = cash_balance - costs
-    Portfolio[stock] = amount
-    print("Your current portfolio consists of the following stock: ")
-    print(Portfolio)
-    print(costs)
-    print(cash_balance)
-# Sell stocks
-if buysell == "s":
-    amount = int(input("How many stocks do you want to buy?"))
-    costs = amount * currentprice
-    cash_balance = cash_balance - costs
-    Portfolio[stock] = -amount
+    # Buy stocks
+        if buysell == "b":
+            amount = int(input("How many stocks do you want to buy?"))
+            costs = amount * currentprice
+            cash_balance = cash_balance - costs
+            Portfolio[stock] = amount
+            print("Your current portfolio consists of the following stock: ")
+            print(Portfolio)
+            print(costs)
+            print(cash_balance)
+    # Sell stocks
+        if buysell == "s":
+            amount = int(input("How many stocks do you want to buy?"))
+            costs = amount * currentprice
+            cash_balance = cash_balance + costs
+            Portfolio[stock] = -amount
+            print("Your current portfolio consists of the following stock: ")
+            print(Portfolio)
+            print(costs)
+            print(cash_balance)
 
 
 
