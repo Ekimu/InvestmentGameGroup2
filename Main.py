@@ -25,22 +25,42 @@ Portfolio = {
 print("Here is a list of some common stocks:")
 print("Tesla (TSLA), Apple (AAPL), Amazon (AMZN), Microsoft (MSFT), Nio Limited (NIO), Nvidia (NVDA), Moderna (MRNA), Nikola (NKLA), IBM (IBM).")
 print("You can choose any stock you want.")
-stock=input("Please select a stock: ")
+print(f"Your current portfolio contains")
+print(Portfolio)
+
+inspect=input("Would you like to inspect a stock: (y/n)")
+if inspect == "y":
+    stock=input("Please select a stock: ")
 
 # 4.b Show changes in stock through a time period (day, week, month, year) with %
-datastock = requesting_one_stock(stock)
-currentprice = datastock["close"][0]
+if inspect =="y":
+    datastock = requesting_one_stock(stock)
+    currentprice = datastock["close"][0]
+
+buysell = input(f"Do you want to buy or sell {stock} stock for the current price {currentprice}? (b/s/n)")
+#else #portfolio
+
+
+
 # Buy stocks
-decision = input(f"Do you want buy {stock} for {currentprice}? (yes/no)")
-if decision == "yes":
+if buysell == "b":
     amount = int(input("How many stocks do you want to buy?"))
     costs = amount * currentprice
     cash_balance = cash_balance - costs
     Portfolio[stock] = amount
+    print("Your current portfolio consists of the following stock: ")
     print(Portfolio)
     print(costs)
     print(cash_balance)
 # Sell stocks
+if buysell == "s":
+    amount = int(input("How many stocks do you want to buy?"))
+    costs = amount * currentprice
+    cash_balance = cash_balance - costs
+    Portfolio[stock] = -amount
+
+
+
 # Compare (e.g. cash balance or portfolio) to other users
 # Exit
 
