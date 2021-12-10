@@ -1,18 +1,19 @@
 from StockData import requesting_one_stock
 from graphs import creating_graph
 
-# Log in
-print("Welcome to our Investment Game!!")
+# Startup message / Log in
+username_input = input("Please enter your username: ")
+password_input = input("Please enter your password: ")
+print(f"Welcome to our Investment Game {username_input}!")
 
-
-# Show cash balance
+# 1. Show cash balance
 cash_balance = 10000
 print(f"Your starting balance is {cash_balance} USD")
 
-# 3.a Show portfolio
+# 2.a Show portfolio
 Portfolio = {
 }
-print(f"Your current portfolio contains {Portfolio}")
+print(f"Your current portfolio contains following stocks {Portfolio}")
 # 1st draft of portfolio structure
 # Portfolio = [
 #     { 'name': 'IMB', 'stockamount': 100 },
@@ -23,12 +24,12 @@ print(f"Your current portfolio contains {Portfolio}")
 
 
 
-# 3.b Show changes in portfolio through a time period (day, week, month, year) with %
+# 2.b Show changes in portfolio through a time period (day, week, month, year) with %
 
 
 
-# 4.a Search stock (based on stock symbol, names, market, currency, etc.)
-# 4.b Show changes in stock through a time period (day, week, month, year) with %
+# 3.a Search stock (based on stock symbol, names, market, currency, etc.)
+# 3.b Show changes in stock through a time period (day, week, month, year) with %
 print("Here is a list of some common stocks:")
 print("Tesla (TSLA), Apple (AAPL), Amazon (AMZN), Microsoft (MSFT), Nio Limited (NIO), Nvidia (NVDA), Moderna (MRNA), Nikola (NKLA), IBM (IBM).")
 
@@ -49,7 +50,7 @@ while True:
             buysell = input(f"Do you want to buy or sell {stock} for the current price {currentprice}? (b/s/n)")
 
 
-        # 5. Buy stocks
+        # 4. Buy stocks
             if buysell == "b":
                 amount = int(input(f"How many shares do you want to buy of {stock}?"))
                 costs = amount * currentprice
@@ -63,7 +64,7 @@ while True:
                 print(f"Your current balance is now: {cash_balance}")
 
 
-        # 6. Sell stocks
+        # 5. Sell stocks
             if buysell == "s":
                 amount = int(input(f"How many shares do you want to sell of {stock}?"))
                 sellprice = amount * currentprice
@@ -77,12 +78,12 @@ while True:
                 print(f"Your current balance is now: {cash_balance}")
 
 
-    # 7. Compare (e.g. cash balance or portfolio) to other users
+    # 6. Compare (e.g. cash balance or portfolio) to other users
 
 
 
 
-    # 8. Exit
+    # 7. Exit
 
 
 
