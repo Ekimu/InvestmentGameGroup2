@@ -30,15 +30,14 @@ print(f"Your current portfolio contains following stocks {Portfolio}")
 
 # 3.a Search stock (based on stock symbol, names, market, currency, etc.)
 # 3.b Show changes in stock through a time period (day, week, month, year) with %
-print("Here is a list of some common stocks:")
-print("Tesla (TSLA), Apple (AAPL), Amazon (AMZN), Microsoft (MSFT), Nio Limited (NIO), Nvidia (NVDA), Moderna (MRNA), Nikola (NKLA), IBM (IBM).")
-
 while True:
     inspect=input("Would you like to inspect a stock: (y/n)")
     if inspect != "y":
         print("You decided not inspect any stock, we'll end here")
         break
     elif inspect == "y":
+        print("Here is a list of some common stocks:")
+        print("Tesla (TSLA), Apple (AAPL), Amazon (AMZN), Microsoft (MSFT), Nio Limited (NIO), Nvidia (NVDA), Moderna (MRNA), Nikola (NKLA), IBM (IBM).")
         while True:
             stock = input("Please select a stock (symbol): ")
             datastock = requesting_one_stock(stock)
