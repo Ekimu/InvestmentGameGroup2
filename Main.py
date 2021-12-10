@@ -52,7 +52,10 @@ while True:
             amount = int(input("How many stocks do you want to buy?"))
             costs = amount * currentprice
             cash_balance = cash_balance - costs
-            Portfolio[stock] = amount
+            if stock in Portfolio:
+                Portfolio[stock] += amount
+            else:
+                Portfolio[stock] = amount
             print("Your current portfolio consists of the following stock: ")
             print(Portfolio)
             print(costs)
@@ -62,7 +65,10 @@ while True:
             amount = int(input("How many stocks do you want to buy?"))
             costs = amount * currentprice
             cash_balance = cash_balance + costs
-            Portfolio[stock] = -amount
+            if stock in Portfolio:
+                Portfolio[stock] -= amount
+            else:
+                Portfolio[stock] = -amount
             print("Your current portfolio consists of the following stock: ")
             print(Portfolio)
             print(costs)
