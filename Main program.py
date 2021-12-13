@@ -11,15 +11,19 @@ print(f"Welcome to our Investment Game, {username_input}!")
 
 #Main program.py:
 while True:
-    print("""Main menu:
+    print("""
+    Main menu:
     1. Show current cash balance
     2. Show current portfolio
     3. Search for stocks
     4. Buy stocks
     5. Sell stocks
     6. Compare to other users
-    0. Quit """)
+    0. Quit 
+    """)
     choice=input("Please choose what you want to do: ")
+    print("""
+    """)
     if choice=="1":
         print("1. Show current cash balance")
         print(f"Your current balance is now: {cash_balance} USD")
@@ -52,16 +56,20 @@ while True:
         currentprice = datastock["4. close"][0]
         amount = int(input(f"How many shares do you want to buy of {stock}?: "))
         costs = amount * currentprice
-        print(f"The total cost of the shares is: {costs}")
-        new_cash_balance = cash_balance - costs
-        if new_cash_balance < 0:
-            print("You don't have enough cash in your balance to buy this stock. You will be sent to the main menu.")
+        confirmbuy = input(f"Please confirm you want to buy {amount} shares of {stock} for the cost of {costs} USD? (y/n)" )
+        if confirmbuy != "y":
+            print("You chose not to buy any stocks. You'll be sent to main menu.")
         else:
-            cash_balance = new_cash_balance
-            if stock in Portfolio:
-                Portfolio[stock] += amount
+            new_cash_balance = cash_balance - costs
+            if new_cash_balance < 0:
+                print("You don't have enough cash in your balance to buy this stock. You will be sent to the main menu.")
             else:
-                Portfolio[stock] = amount
+                cash_balance = new_cash_balance
+                print(f"You bought {amount} shares of {stock} for the cost of {costs} USD, back to main menu you go!")
+                if stock in Portfolio:
+                    Portfolio[stock] += amount
+                else:
+                    Portfolio[stock] = amount
     elif choice=="5":
         print("5. Sell stocks")
         while True:
