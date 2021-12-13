@@ -22,7 +22,7 @@ while True:
     choice=input("Please choose what you want to do: ")
     if choice=="1":
         print("1. Show current cash balance")
-        print(f"Your current balance is now: {cash_balance}")
+        print(f"Your current balance is now: {cash_balance} USD")
 
     elif choice=="2":
         print("2. Show current portfolio")
@@ -73,11 +73,11 @@ while True:
         currentprice = datastock["4. close"][0]
         amount = int(input(f"How many shares do you want to sell of {stock}?: "))
         gains = amount * currentprice
-        print(f"The total gain of the shares is: {gains}")
         if stock in Portfolio:
             if Portfolio[stock] < amount:
                 print("You own less shares, than you want to sell of this stock. You will be sent to the main menu.")
             else:
+               print(f"The total gain of the shares is: {gains}")
                Portfolio[stock] -= amount
                cash_balance = cash_balance + gains
         else:

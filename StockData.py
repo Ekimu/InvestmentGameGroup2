@@ -16,8 +16,8 @@ def requesting_one_stock(stock):
     try:
         data = raw_data['Time Series (60min)']
         df = pd.DataFrame(data).T.apply(pd.to_numeric)
-        df.info()
-        print(df.head())
+        #df.info()
+        #print(df.head())
         return df
     except KeyError:
         print("Oops! That was not a stock name. Try again...")

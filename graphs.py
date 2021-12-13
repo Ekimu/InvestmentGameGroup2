@@ -5,7 +5,7 @@ def creating_graph(datastock, stock):
     datastock.index = pd.DatetimeIndex(datastock.index)
     datastock.rename(columns=lambda s: s[3:], inplace=True)
     timeframe = int(input("How many business days would you like to see? (1-40)"))
-    if timeframe in [0,40]:
+    if 0 < timeframe < 41:
         datatoplot = datastock.close.resample('B').last().iloc[40 - timeframe:1000]
     else:
         return print("Invalid number of days.")
