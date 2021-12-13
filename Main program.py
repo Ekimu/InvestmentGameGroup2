@@ -32,6 +32,15 @@ while True:
         print("2. Show current portfolio")
         print(f"Your current portfolio contains following stocks {Portfolio}")
         # 2.b Maybe option for looking at development in specific stocks in portfolio
+        totalvalue = 0
+        for stocks in Portfolio:
+            portfoliodata = requesting_one_stock(stocks)
+            Portfolioprice = portfoliodata["4. close"][0]
+            totalvalue += Portfolioprice * Portfolio[stocks]
+            print(f"The current holdings of {stocks} amounts to {Portfolioprice*Portfolio[stocks]} USD.")
+        print(f"The current total value of your portfolio is {totalvalue} USD.")
+        print(f"Your current cash balance is now: {cash_balance} USD")
+
 
     elif choice=="3":
         print("3. Search for stocks")
