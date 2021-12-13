@@ -23,7 +23,6 @@ while True:
     3. Search for stocks
     4. Buy stocks
     5. Sell stocks
-    6. Compare to other users
     0. Quit 
     """)
     choice=input("Please choose what you want to do: ")
@@ -37,7 +36,10 @@ while True:
         print("2. Show current portfolio")
         print(f"""Your current portfolio contains following stocks 
 {Portfolio}""")
-        Portfolio.groupby(["Name"]).sum("amount").sum("value")
+        #portfoliosum = Portfolio.sum("value")
+        #print(portfoliosum)
+
+        #Portfolio.groupby(["Name"]).sum("amount").sum("value")
 
         # 2.b Maybe option for looking at development in specific stocks in portfolio
         # totalvalue = 0
@@ -48,7 +50,7 @@ while True:
         #     totalvalue += Portfolioprice * Portfolio[stocks]
         #     print(f"The current holdings of {stocks} amounts to {Portfolioprice*Portfolio[stocks]} USD.")
         # print(f"The current total value of your portfolio is {totalvalue} USD.")
-        # print(f"Your current cash balance is now: {cash_balance} USD")
+        print(f"Your current cash balance is now: {cash_balance} USD")
 
 
     elif choice=="3":
@@ -143,8 +145,8 @@ while True:
             # else:
             #     print("You don't own this stock. You will be sent to the main menu.")
 
-    elif choice=="6":
-        print("6. Compare to other users")
+    # elif choice=="6":
+    #     print("6. Compare to other users")
 
     elif choice=="0":
         print("Thank you for playing our Investment Game. Hope to see you soon. Bye!")
