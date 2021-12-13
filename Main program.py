@@ -54,7 +54,14 @@ while True:
                 continue
             break
         currentprice = datastock["4. close"][0]
-        amount = int(input(f"How many shares do you want to buy of {stock}?: "))
+
+        while True:
+            try:
+                amount = int(input(f"How many shares do you want to buy of {stock}?: "))
+                break
+            except ValueError:
+                print("Oops! Not a number. Try again... ")
+
         costs = amount * currentprice
         confirmbuy = input(f"Please confirm you want to buy {amount} shares of {stock} for the cost of {costs} USD? (y/n)" )
         if confirmbuy != "y":
@@ -79,7 +86,14 @@ while True:
                 continue
             break
         currentprice = datastock["4. close"][0]
-        amount = int(input(f"How many shares do you want to sell of {stock}?: "))
+
+        while True:
+            try:
+                amount = int(input(f"How many shares do you want to sell of {stock}?: "))
+                break
+            except ValueError:
+                print("Oops! Not a number. Try again... ")
+
         gains = amount * currentprice
         confirmsell = input(
             f"Please confirm you want to sell {amount} shares of {stock} for the total value of {gains} USD? (y/n)")
