@@ -1,8 +1,11 @@
+cash_balance = 10000
+Portfolio = {
+        }
 #Main program:
 while True:
     print("""Main menu:
-    1. Show cash balance
-    2. Show portfolio
+    1. Show current cash balance
+    2. Show current portfolio
     3. Search for stocks
     4. Buy stocks
     5. Sell stocks
@@ -10,12 +13,12 @@ while True:
     0. Quit """)
     choice=input("Please choose what you want to do: ")
     if choice=="1":
-        print("1. Show cash balance")
-
+        print("1. Show current cash balance")
+        print(f"{cash_balance}")
     elif choice=="2":
-        print("2. Show portfolio")
+        print("2. Show current portfolio")
+        print(f"Your current portfolio contains following stocks {Portfolio}")
         # 2.b Maybe option for looking at development in specific stocks in portfolio
-
     elif choice=="3":
         print("3. Search for stocks")
 

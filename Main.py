@@ -6,27 +6,6 @@ username_input = input("Please enter your username: ")
 password_input = input("Please enter your password: ")
 print(f"Welcome to our Investment Game {username_input}!")
 
-# 1. Show cash balance
-cash_balance = 10000
-print(f"Your starting balance is {cash_balance} USD")
-
-# 2.a Show portfolio
-Portfolio = {
-}
-print(f"Your current portfolio contains following stocks {Portfolio}")
-# 1st draft of portfolio structure
-# Portfolio = [
-#     { 'name': 'IMB', 'stockamount': 100 },
-#     { 'name': 'AMZN', 'stockamount': 40 },
-#     { 'name': 'cash_balance', 'price': 3, 'stock': 30 },
-#     { 'name': 'milk', 'price': 1, 'stock': 80 }
-# ]
-
-
-
-# 2.b Show changes in portfolio through a time period (day, week, month, year) with %
-
-
 
 # 3.a Search stock (based on stock symbol, names, market, currency, etc.)
 # 3.b Show changes in stock through a time period (day, week, month, year) with %
