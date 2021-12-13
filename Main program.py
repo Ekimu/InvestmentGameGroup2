@@ -1,9 +1,14 @@
+import pandas as pd
 from StockData import requesting_one_stock
 from graphs import creating_graph
 
 cash_balance = 10000
-Portfolio = {
-        }
+cols=["Name", "buying_price", "amount", "value"]
+
+Portfolio= pd.DataFrame(columns=cols)
+
+# Portfolio = {
+#         }
 # Startup message / Log in
 username_input = input("Please enter your username: ")
 password_input = input("Please enter your password: ")
@@ -30,16 +35,20 @@ while True:
 
     elif choice=="2":
         print("2. Show current portfolio")
-        print(f"Your current portfolio contains following stocks {Portfolio}")
+        print(f"""Your current portfolio contains following stocks 
+{Portfolio}""")
+        Portfolio.groupby(["Name"]).sum("amount").sum("value")
+
         # 2.b Maybe option for looking at development in specific stocks in portfolio
-        totalvalue = 0
-        for stocks in Portfolio:
-            portfoliodata = requesting_one_stock(stocks)
-            Portfolioprice = portfoliodata["4. close"][0]
-            totalvalue += Portfolioprice * Portfolio[stocks]
-            print(f"The current holdings of {stocks} amounts to {Portfolioprice*Portfolio[stocks]} USD.")
-        print(f"The current total value of your portfolio is {totalvalue} USD.")
-        print(f"Your current cash balance is now: {cash_balance} USD")
+        # totalvalue = 0
+        # for stocks in Portfolio:
+        #
+        #     portfoliodata = requesting_one_stock(stocks)
+        #     Portfolioprice = portfoliodata["4. close"][0]
+        #     totalvalue += Portfolioprice * Portfolio[stocks]
+        #     print(f"The current holdings of {stocks} amounts to {Portfolioprice*Portfolio[stocks]} USD.")
+        # print(f"The current total value of your portfolio is {totalvalue} USD.")
+        # print(f"Your current cash balance is now: {cash_balance} USD")
 
 
     elif choice=="3":
@@ -82,10 +91,14 @@ while True:
             else:
                 cash_balance = new_cash_balance
                 print(f"You bought {amount} shares of {stock} for the cost of {costs} USD, back to main menu you go!")
-                if stock in Portfolio:
-                    Portfolio[stock] += amount
-                else:
-                    Portfolio[stock] = amount
+                newrow=[stock, currentprice, amount, currentprice*amount]
+                newdf = pd.DataFrame([newrow], columns=cols)
+                Portfolio=pd.concat([Portfolio, newdf])
+                Portfolio.reset_index(inplace=True, drop=True)
+                # if stock in Portfolio:
+                #     Portfolio[stock] += amount
+                # else:
+                #     Portfolio[stock] = amount
     elif choice=="5":
         print("5. Sell stocks")
         while True:
@@ -109,15 +122,26 @@ while True:
         if confirmsell != "y":
             print("You chose not to sell any stocks. You'll be sent to main menu.")
         else:
-            if stock in Portfolio:
-                if Portfolio[stock] < amount:
-                    print("You own less shares, than you want to sell of this stock. You will be sent to the main menu.")
-                else:
-                   print(f"You sold {amount} shares of {stock} for the total value of {gains} USD, back to main menu you go!")
-                   Portfolio[stock] -= amount
-                   cash_balance = cash_balance + gains
+            sellscurrentamount = Portfolio[Portfolio['Name'] == stock]['amount'].sum()
+            if sellscurrentamount < amount:
+                print("You own less shares, than you want to sell of this stock. You will be sent to the main menu.")
             else:
-                print("You don't own this stock. You will be sent to the main menu.")
+               print(f"You sold {amount} shares of {stock} for the total value of {gains} USD, back to main menu you go!")
+               newrow = [stock, currentprice, -amount, currentprice*(-amount)]
+               newdf = pd.DataFrame([newrow], columns=cols)
+               Portfolio = pd.concat([Portfolio, newdf])
+               Portfolio.reset_index(inplace=True, drop=True)
+               cash_balance = cash_balance + gains
+
+            # if stock in Portfolio:
+            #     if Portfolio[stock] < amount:
+            #         print("You own less shares, than you want to sell of this stock. You will be sent to the main menu.")
+            #     else:
+            #        print(f"You sold {amount} shares of {stock} for the total value of {gains} USD, back to main menu you go!")
+            #        Portfolio[stock] -= amount
+            #        cash_balance = cash_balance + gains
+            # else:
+            #     print("You don't own this stock. You will be sent to the main menu.")
 
     elif choice=="6":
         print("6. Compare to other users")
