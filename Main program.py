@@ -9,7 +9,7 @@ username_input = input("Please enter your username: ")
 password_input = input("Please enter your password: ")
 print(f"Welcome to our Investment Game, {username_input}!")
 
-#Main program:
+#Main program.py:
 while True:
     print("""Main menu:
     1. Show current cash balance
