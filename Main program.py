@@ -81,15 +81,20 @@ while True:
         currentprice = datastock["4. close"][0]
         amount = int(input(f"How many shares do you want to sell of {stock}?: "))
         gains = amount * currentprice
-        if stock in Portfolio:
-            if Portfolio[stock] < amount:
-                print("You own less shares, than you want to sell of this stock. You will be sent to the main menu.")
-            else:
-               print(f"The total gain of the shares is: {gains}")
-               Portfolio[stock] -= amount
-               cash_balance = cash_balance + gains
+        confirmsell = input(
+            f"Please confirm you want to sell {amount} shares of {stock} for the total value of {gains} USD? (y/n)")
+        if confirmsell != "y":
+            print("You chose not to sell any stocks. You'll be sent to main menu.")
         else:
-            print("You don't own this stock. You will be sent to the main menu.")
+            if stock in Portfolio:
+                if Portfolio[stock] < amount:
+                    print("You own less shares, than you want to sell of this stock. You will be sent to the main menu.")
+                else:
+                   print(f"You sold {amount} shares of {stock} for the total value of {gains} USD, back to main menu you go!")
+                   Portfolio[stock] -= amount
+                   cash_balance = cash_balance + gains
+            else:
+                print("You don't own this stock. You will be sent to the main menu.")
 
     elif choice=="6":
         print("6. Compare to other users")
