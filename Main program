@@ -7,7 +7,7 @@ Portfolio = {
 # Startup message / Log in
 username_input = input("Please enter your username: ")
 password_input = input("Please enter your password: ")
-print(f"Welcome to our Investment Game {username_input}!")
+print(f"Welcome to our Investment Game, {username_input}!")
 
 #Main program:
 while True:
@@ -22,7 +22,7 @@ while True:
     choice=input("Please choose what you want to do: ")
     if choice=="1":
         print("1. Show current cash balance")
-        print(f"Your current balance is now:{cash_balance}")
+        print(f"Your current balance is now: {cash_balance}")
 
     elif choice=="2":
         print("2. Show current portfolio")
@@ -50,7 +50,7 @@ while True:
                 continue
             break
         currentprice = datastock["4. close"][0]
-        amount = int(input(f"How many shares do you want to buy of {stock}?"))
+        amount = int(input(f"How many shares do you want to buy of {stock}?: "))
         costs = amount * currentprice
         print(f"The total cost of the shares is: {costs}")
         new_cash_balance = cash_balance - costs
@@ -71,7 +71,7 @@ while True:
                 continue
             break
         currentprice = datastock["4. close"][0]
-        amount = int(input(f"How many shares do you want to sell of {stock}?"))
+        amount = int(input(f"How many shares do you want to sell of {stock}?: "))
         gains = amount * currentprice
         print(f"The total gain of the shares is: {gains}")
         if stock in Portfolio:
